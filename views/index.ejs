@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/header') %>
+    <title>CryptoCortex - Home</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Your custom styles -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.0/gsap.min.js"></script> <!-- Animation Library -->
+</head>
+<body>
+
+
+
+    <!-- Hero Section with Parallax -->
+    <header class="hero">
+        <div class="hero-background" data-parallax="true"></div>
+        <h1 class="hero-title">Welcome to CryptoCortex</h1>
+        <p>Your all-in-one dashboard for managing your crypto world.</p>
+        <a href="/dashboard" class="cta-btn">Go to Dashboard</a>
+    </header>
+
+    <!-- Features Section with Animations -->
+    <section class="features">
+        <div class="feature">
+            <img src="https://v2.cimg.co/news/93161/233368/screenshot-2022-11-03-at-12-08-27.jpg" alt="Dashboard Image">
+            <h2>Real-Time Dashboard</h2>
+            <p>Track your crypto finances live! Manage your transactions, balances, and even review detailed analytics on the go.</p>
+        </div>
+        <div class="feature">
+            <img src="https://ak.picdn.net/shutterstock/videos/1068528011/thumb/8.jpg?ip=x480" alt="Crypto News Image">
+            <h2>Crypto News</h2>
+            <p>Stay ahead of the game! Get the latest news, market trends, and expert opinions on the hottest cryptocurrencies.</p>
+        </div>
+        <div class="feature">
+            <img src="https://wallpapercave.com/wp/wp2124843.jpg" alt="Security Image">
+            <h2>Advanced Security</h2>
+            <p>Your security is our priority. With two-factor authentication, encryption, and more, your wallet is safe with us.</p>
+        </div>
+        <div class="feature">
+            <img src="https://wallpapersmug.com/download/3840x2400/cdba82/bitcoin-digital-circuit-art.jpg" alt="Instant Transactions Image">
+            <h2>Instant Transactions</h2>
+            <p>Send and receive crypto with ease and speed, no waiting around. Instant transactions right from your dashboard.</p>
+        </div>
+    </section>
+
+    <!-- Crypto Calculator Section -->
+    <section class="crypto-calculator">
+        <h2>Crypto Value Calculator</h2>
+        <p>Quickly calculate how much your crypto is worth in your local currency!</p>
+        <form id="crypto-calculator-form">
+            <label for="crypto-amount">Amount in BTC:</label>
+            <input type="number" id="crypto-amount" placeholder="Enter amount" min="0" required>
+            <button type="submit" class="cta-btn">Calculate Value</button>
+        </form>
+        <div id="crypto-result" class="result"></div>
+    </section>
+
+    <!-- User Testimonials Section -->
+    <section class="testimonials">
+        <h2>What Our Users Are Saying</h2>
+        <div class="testimonial">
+            <p>"CryptoCortex has been a game-changer for me. I can track my portfolio with ease, and I’m always up-to-date with the latest market trends!"</p>
+            <cite>- Sarah J., Crypto Enthusiast</cite>
+        </div>
+        <div class="testimonial">
+            <p>"The security features are top-notch. I feel safe and confident managing my crypto with CryptoCortex."</p>
+            <cite>- Mark T., Investor</cite>
+        </div>
+        <div class="testimonial">
+            <p>"Love the instant transaction feature! It makes buying and selling crypto smooth and easy."</p>
+            <cite>- John D., Trader</cite>
+        </div>
+    </section>
+
+    <!-- User Feedback Section -->
+    <section class="feedback">
+        <h2>Give Us Your Feedback</h2>
+        <p>Tell us what you think about CryptoCortex, so we can keep improving!</p>
+        <form id="feedback-form">
+            <textarea id="feedback" placeholder="Your feedback" rows="4" required></textarea>
+            <button type="submit" class="cta-btn">Submit Feedback</button>
+        </form>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta">
+        <h2>Ready to Dive In?</h2>
+        <p>Get started with CryptoCortex today and take control of your crypto assets like a pro.</p>
+        <a href="/register" class="cta-btn">Register</a>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <%- include('./partials/footer') %>
+    </footer>
+
+    <!-- Optional: Adding a Script for Crypto Calculator -->
+    <script>
+        document.getElementById('crypto-calculator-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Get the user input (amount in BTC)
+            let amount = parseFloat(document.getElementById('crypto-amount').value);
+            
+            // Assuming 1 BTC = 25,000 USD (You can replace this with a live API)
+            const btcToUsd = 25000;
+            const value = amount * btcToUsd;
+            
+            // Display the result
+            const resultDiv = document.getElementById('crypto-result');
+            resultDiv.innerHTML = `<p>${amount} BTC is worth $${value.toLocaleString()} USD.</p>`;
+        });
+
+        // Parallax Effect for Hero Section
+        window.addEventListener('scroll', function() {
+            const background = document.querySelector('.hero-background');
+            const offset = window.pageYOffset;
+            background.style.backgroundPositionY = offset * 0.5 + 'px';
+        });
+
+        // Night Mode Toggle Function
+        function toggleNightMode() {
+            document.body.classList.toggle('night-mode');
+        }
+    </script>
+
+    <!-- Floating Button for Support -->
+    <div class="fab">
+        <a href="mailto:support@cryptocortex.com" class="fab-btn">💬</a>
+    </div>
+
+</body>
+</html>

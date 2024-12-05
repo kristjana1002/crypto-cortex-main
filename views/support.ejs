@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support - Yo, We Got You</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script>
+    // JavaScript to handle form validation
+    function validateForm() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      
+      if (!name || !email || !message) {
+        alert("Yo, all fields are required!");
+        return false;
+      }
+      return true;
+    }
+
+    // Success message display
+    function showSuccessMessage() {
+      document.getElementById('success-message').style.display = 'block';
+      document.getElementById('support-form').reset();
+    }
+  </script>
+</head>
+<body>
+  <!-- Include the header partial -->
+  <%- include('partials/header') %>
+
+  <main>
+    <section class="support-section">
+      <h1>We Got Your Back, Fam!</h1>
+      <p>If you need help, we here for you. Drop your issue below, and we'll get back to you ASAP.</p>
+
+      <!-- Success Message -->
+      <div id="success-message" style="display:none; color: green;">
+        <h3>Thanks for reaching out, homie! We’ll be in touch soon!</h3>
+      </div>
+
+      <!-- Support Form -->
+      <form id="support-form" action="/support" method="POST" onsubmit="return validateForm()">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required placeholder="Enter your name">
+
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required placeholder="Enter your email">
+
+        <label for="message">What's the problem?</label>
+        <textarea id="message" name="message" required placeholder="Tell us what's going on"></textarea>
+
+        <button type="submit" onclick="showSuccessMessage()">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Include the footer partial -->
+  <%- include('partials/footer') %>
+</body>
+</html>

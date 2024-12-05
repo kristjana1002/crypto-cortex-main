@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction History</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- For Chart.js -->
+    <script src="/js/scripts.js" defer></script>
+</head>
+<body>
+    <%- include('partials/header') %>
+    <div class="container">
+        <h1>Transaction History</h1>
+
+
+        <!-- Hero Section with Image -->
+        <section class="hero">
+            <img src="https://wallpapers.com/images/featured/crypto-35g79frx9mqtlp5e.jpg" alt="Financial Transactions" class="hero-image">
+            <p class="hero-text">Your transaction history at a glance. Filter, search, and manage your finances like a boss.</p>
+        </section>
+        
+        <!-- Filters Section -->
+        <div class="filters">
+            <form id="filterForm" method="GET" action="/transactions/history">
+                <label for="dateFrom">From:</label>
+                <input type="date" id="dateFrom" name="dateFrom">
+                
+                <label for="dateTo">To:</label>
+                <input type="date" id="dateTo" name="dateTo">
+                
+                <label for="category">Category:</label>
+                <select id="category" name="category">
+                    <option value="all">All</option>
+                    <option value="food">Food</option>
+                    <option value="rent">Rent</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="investment">Investment</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="transactionType">Type:</label>
+                <select id="transactionType" name="transactionType">
+                    <option value="all">All</option>
+                    <option value="income">Income</option>
+                    <option value="expense">Expense</option>
+                </select>
+
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </form>
+        </div>
+
+        <!-- Progress Bar for Filtering -->
+        <div id="filterProgressBar" class="progress-bar" style="display:none;">
+            <div class="progress-bar-inner"></div>
+        </div>
+
+        <!-- Search Section -->
+        <div class="search-bar">
+            <input type="text" id="searchTransaction" placeholder="Search by description..." onkeyup="filterTransactions()">
+        </div>
+
+        <!-- Transaction Table -->
+        <table class="transaction-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody id="transactionTableBody">
+                <% if (transactions && transactions.length > 0) { %>
+                    <% transactions.forEach(transaction => { %>
+                        <tr title="<%= transaction.description %>">
+                            <td><%= transaction.date %></td>
+                            <td><%= transaction.description %></td>
+                            <td><%= transaction.category %></td>
+                            <td><%= transaction.type %></td>
+                            <td><%= transaction.amount.toFixed(2) %></td>
+                        </tr>
+                    <% }); %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="5" class="no-transactions">No transactions found.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+
+        <!-- Pagination Section -->
+        <div class="pagination">
+            <button class="btn btn-pagination">Previous</button>
+            <span class="page-number">Page 1 of 10</span>
+            <button class="btn btn-pagination">Next</button>
+        </div>
+
+        <!-- Download Button -->
+        <div class="download-section">
+            <button class="btn btn-download" onclick="downloadHistory()">Download History</button>
+        </div>
+
+        <!-- Chart Section (Optional) -->
+        <div class="chart-container">
+            <canvas id="transactionChart"></canvas>
+        </div>
+
+    </div>
+
+    <%- include('partials/footer') %>
+
+    <!-- Script for Chart -->
+    <script>
+        // Example of a simple bar chart using Chart.js
+        const ctx = document.getElementById('transactionChart').getContext('2d');
+        const transactionChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Food', 'Rent', 'Entertainment', 'Investment', 'Other'],
+                datasets: [{
+                    label: 'Expenses vs Income',
+                    data: [12, 19, 3, 5, 2], // Example data
+                    backgroundColor: ['#ff0000', '#ff7f00', '#ffcc00', '#00ff00', '#0000ff'],
+                    borderColor: ['#ff0000', '#ff7f00', '#ffcc00', '#00ff00', '#0000ff'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.raw + ' Transactions';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

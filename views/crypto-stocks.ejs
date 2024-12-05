@@ -1,0 +1,75 @@
+<!-- /views/crypto-stocks.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto & Stocks</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <!-- Include header -->
+  <%- include('partials/header') %>
+
+  <main>
+    <h1>Crypto & Stock Market Data</h1>
+
+    <!-- Cryptocurrency Section -->
+    <section class="crypto-section">
+      <h2>Top Cryptocurrencies</h2>
+      <% if (cryptoData && cryptoData.length > 0) { %>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Price</th>
+              <th>24h Change</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% cryptoData.forEach(crypto => { %>
+              <tr>
+                <td><%= crypto.name %></td>
+                <td>$<%= crypto.price_usd %></td>
+                <td><%= crypto.percent_change_24h %>%</td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      <% } else { %>
+        <p>No crypto data available.</p>
+      <% } %>
+    </section>
+
+    <!-- Stock Market Section -->
+    <section class="stocks-section">
+      <h2>Stock Market</h2>
+      <% if (stocksData && stocksData.length > 0) { %>
+        <table>
+          <thead>
+            <tr>
+              <th>Stock</th>
+              <th>Price</th>
+              <th>Change</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% stocksData.forEach(stock => { %>
+              <tr>
+                <td><%= stock.symbol %></td>
+                <td>$<%= stock.price %></td>
+                <td><%= stock.change %>%</td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      <% } else { %>
+        <p>No stock data available.</p>
+      <% } %>
+    </section>
+  </main>
+
+  <!-- Include footer -->
+  <%- include('partials/footer') %>
+</body>
+</html>

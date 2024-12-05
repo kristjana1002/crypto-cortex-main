@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Management</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/scripts.js" defer></script>
+</head>
+<body>
+    <%- include('partials/header') %>
+    
+    <div class="container">
+        <!-- Glowing Header -->
+        <h1 class="glowing-text">Budget Management</h1>
+
+        <!-- Budget Summary -->
+        <div class="budget-summary">
+            <h2>Your Budgets</h2>
+            <table class="budget-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Budget</th>
+                        <th>Spent</th>
+                        <th>Remaining</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (budgets && budgets.length > 0) { %>
+                        <% budgets.forEach(budget => { %>
+                            <tr>
+                                <td><%= budget.category %></td>
+                                <td>$<%= budget.limit.toFixed(2) %></td>
+                                <td>$<%= budget.spent.toFixed(2) %></td>
+                                <td>$<%= (budget.limit - budget.spent).toFixed(2) %></td>
+                                <td>
+                                    <button class="btn btn-primary" onclick="editBudget('<%= budget.category %>', <%= budget.limit %>)">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </button>
+                                    <form action="/budgets/delete" method="POST" style="display: inline;">
+                                        <input type="hidden" name="category" value="<%= budget.category %>">
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="fas fa-trash"></i> Delete
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <% }); %>
+                    <% } else { %>
+                        <tr>
+                            <td colspan="5" class="no-budgets">No budgets set. Add one below!</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Budget Chart -->
+        <div class="budget-chart">
+            <h3>Budget Allocation</h3>
+            <canvas id="budgetChart"></canvas>
+        </div>
+
+        <!-- Add or Update Budget -->
+        <div class="add-budget">
+            <h2>Add or Update Budget</h2>
+            <button class="btn btn-success" onclick="openModal()">Add Budget</button>
+        </div>
+    </div>
+
+
+
+    <!-- Modal for Add Budget -->
+    <div id="budgetModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Add or Update Budget</h2>
+            <form action="/budgets/add" method="POST" id="budgetForm">
+                <label for="category">Category:</label>
+                <input type="text" id="category" name="category" placeholder="e.g., Food, Rent, etc." required>
+                
+                <label for="limit">Budget Limit:</label>
+                <input type="number" id="limit" name="limit" step="0.01" placeholder="Enter amount" required>
+                
+                <button type="submit" class="btn btn-success">Save Budget</button>
+            </form>
+
+            <!-- Add New Category Section -->
+            <div class="add-category">
+                <h3>Add a New Category</h3>
+                <form action="/categories/add" method="POST">
+                    <label for="newCategory">New Category Name:</label>
+                    <input type="text" id="newCategory" name="categoryName" placeholder="Enter a new category" required>
+                    
+                    <button type="submit" class="btn btn-primary">Add Category</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Action Button (FAB) -->
+    <div class="fab" onclick="openModal()">
+        <i class="fas fa-plus"></i>
+    </div>
+
+    <%- include('partials/footer') %>
+
+    <!-- Chart.js Script -->
+    <script>
+        const ctx = document.getElementById('budgetChart').getContext('2d');
+        const budgetChart = new Chart(ctx, {
+            type: 'pie', // Pie chart for budget allocation
+            data: {
+                labels: ['Food', 'Rent', 'Entertainment', 'Miscellaneous'],
+                datasets: [{
+                    label: 'Budget Allocation',
+                    data: [300, 500, 150, 100], // Example data, replace with dynamic data
+                    backgroundColor: ['#ff0000', '#ff7f00', '#00bcd4', '#00ff41'],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                },
+            }
+        });
+
+        // Modal Functions
+        function openModal() {
+            document.getElementById('budgetModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('budgetModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1985 @@
+/* Base Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #0a0a0a;
+    color: #fff;
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+    overflow-x: hidden;
+}
+
+/* Night Mode Styles */
+body.night-mode {
+    background-color: #121212;
+    color: #ccc;
+}
+
+/* Links and Buttons */
+a {
+    text-decoration: none;
+    color: #00ff41; /* Neon Green */
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: color 0.3s, transform 0.2s;
+}
+
+a:hover {
+    color: #00bcd4; /* Cyber Blue */
+    transform: translateY(-5px);
+}
+
+.cta-btn {
+    padding: 10px 20px;
+    background-color: #00bcd4; /* Cyber Blue */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    box-shadow: 0 0 10px rgba(0, 188, 212, 0.8);
+    transition: background-color 0.3s ease, box-shadow 0.2s;
+}
+
+.cta-btn:hover {
+    background-color: #ff4081; /* Neon Pink */
+    box-shadow: 0 0 20px rgba(255, 64, 129, 0.8);
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 100vh;
+    background: #000 url('your-glitchy-hero-image.jpg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+    animation: glitch-background 1.5s infinite;
+}
+
+@keyframes glitch-background {
+    0% {
+        transform: translate(0, 0);
+    }
+    20% {
+        transform: translate(-5px, -5px);
+    }
+    40% {
+        transform: translate(5px, 5px);
+    }
+    60% {
+        transform: translate(-5px, 0);
+    }
+    80% {
+        transform: translate(5px, 0);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+.hero-title {
+    font-size: 4.5rem;
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    animation: glitch-text 2s infinite;
+}
+
+@keyframes glitch-text {
+    0% {
+        text-shadow: 0 0 5px #00ff41, 0 0 10px #00ff41, 0 0 15px #00ff41;
+    }
+    20% {
+        text-shadow: 2px 2px 4px #ff4081, 0 0 10px #ff4081;
+    }
+    40% {
+        text-shadow: -2px -2px 5px #00bcd4, 0 0 15px #00bcd4;
+    }
+    60% {
+        text-shadow: 0 0 5px #00ff41, 0 0 10px #00ff41, 0 0 15px #00ff41;
+    }
+    100% {
+        text-shadow: 0 0 5px #ff4081, 0 0 10px #ff4081, 0 0 15px #ff4081;
+    }
+}
+
+.hero p {
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #aaa;
+}
+/* CTA Section */
+.cta {
+    padding: 80px 20px;
+    background-color: #1a1a1a;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* CTA Title Styling */
+.cta h2 {
+    font-size: 3rem;
+    color: #00ff41; /* Neon Green */
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(0, 255, 65, 0.7);
+}
+
+/* CTA Description Styling */
+.cta p {
+    font-size: 1.2rem;
+    color: #ccc;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+/* CTA Button Styling */
+.cta .cta-btn {
+    background-color: #00ff41;
+    color: #1a1a1a;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 15px 40px;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.7); /* Neon glow */
+}
+
+/* Hover effect for CTA Button */
+.cta .cta-btn:hover {
+    background-color: #00bcd4; /* Cyber Blue */
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(0, 188, 212, 0.8);
+}
+
+/* Centering the CTA content */
+.cta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Make sure the content stays centered on mobile */
+@media (max-width: 768px) {
+    .cta h2 {
+        font-size: 2.5rem;
+    }
+
+    .cta p {
+        font-size: 1rem;
+    }
+
+    .cta .cta-btn {
+        padding: 12px 30px;
+    }
+}
+
+/* Features Section */
+.features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    padding: 60px 20px;
+    background-color: #1a1a1a;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+.feature {
+    background-color: #292929;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature:hover {
+    background-color: #222;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
+}
+
+.feature img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.feature h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #00ff41; /* Neon Green */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.feature p {
+    font-size: 1rem;
+    color: #ddd;
+    line-height: 1.4;
+    font-weight: 300;
+}
+
+.feature img:hover {
+    transform: scale(1.05);
+}
+
+/* Crypto Calculator */
+.crypto-calculator {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #111;
+}
+
+.crypto-calculator h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #00bcd4; /* Cyber Blue */
+    text-transform: uppercase;
+}
+
+.crypto-calculator form {
+    margin-top: 30px;
+}
+
+#crypto-amount {
+    padding: 15px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background-color: #444;
+    color: #00ff41;
+    font-size: 1.2rem;
+    width: 220px;
+    transition: border 0.3s ease, background-color 0.3s;
+}
+
+#crypto-amount:focus {
+    border: 1px solid #00ff41;
+    background-color: #333;
+}
+
+.crypto-calculator button {
+    padding: 15px 30px;
+    background-color: #00bcd4; /* Cyber Blue */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 188, 212, 0.6);
+    transition: background-color 0.3s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.crypto-calculator button:hover {
+    background-color: #ff4081; /* Neon Pink */
+    box-shadow: 0 0 20px rgba(255, 64, 129, 0.8);
+    transform: scale(1.05);
+}
+
+.result {
+    margin-top: 20px;
+    font-size: 1.6rem;
+    color: #00ff41; /* Neon Green */
+}
+
+/* Floating Button */
+.fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+
+/* General Styles for Testimonials and Feedback */
+.testimonials, .feedback {
+    padding: 80px 20px;
+    background-color: #1a1a1a;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Title Styling for Testimonials and Feedback */
+.testimonials h2, .feedback h2 {
+    font-size: 3rem;
+    color: #00ff41; /* Neon Green */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    text-shadow: 0 0 10px rgba(0, 255, 65, 0.7);
+}
+
+/* Testimonials Cards Styling */
+.testimonial-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    width: 100%;
+    max-width: 1100px;
+}
+
+/* Individual Testimonial Styling */
+.testimonial {
+    background-color: rgba(0, 0, 0, 0.8);
+    margin: 20px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: testimonialFadeIn 0.7s ease-in-out forwards;
+}
+
+.testimonial:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.testimonial:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.testimonial:nth-child(3) {
+    animation-delay: 0.7s;
+}
+
+.testimonial p {
+    font-size: 1.2rem;
+    color: #ddd;
+    line-height: 1.5;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.testimonial cite {
+    font-size: 1rem;
+    color: #00bcd4; /* Cyber Blue */
+    font-weight: 600;
+}
+
+/* Fade-in Animation for Testimonials */
+@keyframes testimonialFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Glitch Effect for Testimonial Text */
+.testimonial p {
+    position: relative;
+    animation: glitch 1.5s infinite;
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(2px, 0);
+        text-shadow: 1px 0 0 #00ff41, -1px 0 0 #00ff41;
+    }
+    20% {
+        transform: translate(-2px, 0);
+        text-shadow: 1px 0 0 #ff4081, -1px 0 0 #ff4081;
+    }
+    40% {
+        transform: translate(3px, 0);
+        text-shadow: 1px 0 0 #00bcd4, -1px 0 0 #00bcd4;
+    }
+    60% {
+        transform: translate(-3px, 0);
+        text-shadow: 1px 0 0 #ff4081, -1px 0 0 #ff4081;
+    }
+    80% {
+        transform: translate(1px, 0);
+        text-shadow: 1px 0 0 #00ff41, -1px 0 0 #00ff41;
+    }
+    100% {
+        transform: translate(0, 0);
+        text-shadow: 1px 0 0 #00ff41, -1px 0 0 #00ff41;
+    }
+}
+
+/* Feedback Section Styles */
+.feedback textarea {
+    width: 100%;
+    max-width: 600px;
+    padding: 15px;
+    background-color: #333;
+    color: #fff;
+    border: 2px solid #00ff41;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    transition: border 0.3s;
+}
+
+.feedback textarea:focus {
+    border-color: #00bcd4; /* Cyber Blue */
+    outline: none;
+}
+
+.feedback button {
+    background-color: #00ff41;
+    color: #1a1a1a;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.feedback button:hover {
+    background-color: #00bcd4; /* Cyber Blue */
+    transform: scale(1.05);
+}
+
+.feedback p {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-bottom: 30px;
+}
+
+.feedback form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .testimonial-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feedback textarea {
+        max-width: 100%;
+    }
+
+    .feedback button {
+        width: 100%;
+    }
+}
+
+/* Header */
+/* Header and Navigation Styles */
+header {
+    background-color: #1a1a1a; /* Dark background for the header */
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Logo Styling */
+header .logo {
+    width: 150px;
+    height: auto;
+    margin-right: 30px;
+    display: inline-block;
+    animation: logoPulse 2s infinite alternate; /* Animation for logo pulsing */
+}
+
+/* Navigation Bar Styles */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    margin: 0 20px;
+    position: relative;
+}
+
+/* Link Styling */
+.nav-links a {
+    color: #00ff41; /* Neon Green */
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    position: relative;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect for Links */
+.nav-links a:hover {
+    color: #00bcd4; /* Cyber Blue */
+    text-shadow: 0 0 10px rgba(0, 255, 65, 0.8), 0 0 20px rgba(0, 188, 212, 0.8);
+    transform: translateY(-5px);
+}
+
+/* Active Link Styling */
+.nav-links a.active {
+    color: #ff007f; /* Neon Pink for active link */
+    text-shadow: 0 0 10px #ff007f;
+}
+
+/* Glowing Underline on Hover */
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background-color: #00ff41;
+    bottom: -5px;
+    left: 50%;
+    transition: width 0.3s ease, left 0.3s ease;
+    transform: translateX(-50%);
+}
+
+/* Hover on the underline */
+.nav-links a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Neon Pulse Animation for Logo */
+@keyframes logoPulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(0, 255, 65, 0.8);
+    }
+    100% {
+        transform: scale(1.1);
+        box-shadow: 0 0 40px rgba(0, 255, 65, 1);
+    }
+}
+
+/* Media Queries for Smaller Screens */
+@media (max-width: 768px) {
+    /* Stack the nav items vertically on smaller screens */
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Adjust logo size on mobile */
+    .logo {
+        width: 120px;
+        margin-bottom: 20px;
+    }
+
+    /* Make links larger and stack them vertically */
+    .nav-links {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .nav-links a {
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+    }
+}
+
+
+/* Features Section */
+.features {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+}
+
+.feature {
+    width: 45%;
+    background-color: #1f1f1f;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.feature img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.feature h2 {
+    color: #ffb74d;
+    font-size: 1.8em;
+    margin: 10px 0;
+}
+
+/* Dashboard */
+.dashboard-header {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.dashboard-header img {
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+}
+
+.overview {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.overview img {
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.transaction-history ul {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.transaction-history li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: #333;
+    margin-bottom: 5px;
+    border-radius: 4px;
+}
+
+/* Footer */
+/* Footer Styling */
+footer {
+    background-color: #1a1a1a; /* Dark background */
+    padding: 40px 20px;
+    text-align: center;
+    color: #ccc; /* Light gray text */
+    position: relative;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.6); /* Subtle shadow for separation */
+}
+
+/* Footer Text Styling */
+footer p {
+    font-size: 1rem;
+    margin: 10px 0;
+    color: #ccc; /* Light gray */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3); /* Soft glow effect */
+}
+
+/* Styling for the links in the footer */
+footer a {
+    color: #00ff41; /* Neon Green */
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Hover Effects for Links */
+footer a:hover {
+    color: #00bcd4; /* Cyber Blue on hover */
+    text-shadow: 0 0 10px rgba(0, 255, 65, 0.8), 0 0 20px rgba(0, 188, 212, 0.8);
+    transform: scale(1.1); /* Slight scale effect on hover */
+}
+
+/* Footer Responsive Design */
+@media (max-width: 768px) {
+    footer p {
+        font-size: 0.9rem; /* Smaller text size on mobile */
+    }
+
+    footer a {
+        font-size: 1rem; /* Adjust link size for mobile */
+    }
+}
+
+
+/* About Page Specific Styling */
+.about-page {
+    text-align: center;
+    color: #e0e0e0;
+}
+
+.about-header h1 {
+    font-size: 3em;
+    color: #ffb74d;
+}
+
+.intro, .features, .final-thoughts {
+    margin-top: 40px;
+}
+
+.intro img, .final-thoughts img {
+    margin-top: 20px;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.features {
+    background-color: #1c1c1c;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.feature-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.feature {
+    width: 45%;
+    margin: 10px;
+    background: #333;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+.feature h3 {
+    color: #ffa726;
+}
+
+.feature img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* Settings Page Styles */
+.settings-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.settings-page h1 {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.settings-section {
+    margin-bottom: 30px;
+}
+
+.settings-section h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.settings-section label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.settings-section input,
+.settings-section select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.danger-zone {
+    background-color: #ffefef;
+    padding: 15px;
+    border-radius: 4px;
+    border: 1px solid #ff4d4d;
+}
+
+.danger-zone p {
+    color: #ff4d4d;
+}
+
+.delete-button {
+    background-color: #ff4d4d;
+}
+
+.delete-button:hover {
+    background-color: #cc0000;
+}
+
+/* Basic Styles for Settings Page */
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    padding-top: 50px;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 20px 0;
+}
+
+header img {
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #f8f8f8;
+}
+
+p {
+    font-size: 1.2em;
+    color: #b3b3b3;
+}
+
+/* Features Section */
+.features {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+}
+
+.feature {
+    width: 45%;
+    background-color: #1f1f1f;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.feature img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.feature h2 {
+    color: #ffb74d;
+    font-size: 1.8em;
+    margin: 10px 0;
+}
+
+/* Dashboard */
+.dashboard-header {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.dashboard-header img {
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+}
+
+.overview {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.overview img {
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.transaction-history ul {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.transaction-history li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: #333;
+    margin-bottom: 5px;
+    border-radius: 4px;
+}
+
+/* Footer */
+/* Footer Styling */
+footer {
+    background-color: #121212; /* Dark background */
+    color: #ccc; /* Light text color */
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    font-family: 'Roboto', sans-serif;
+    border-top: 2px solid #00ff41; /* Neon Green border at the top */
+}
+
+/* Footer Text Styling */
+footer p {
+    margin: 10px 0;
+    color: #bbb; /* Subtle text color */
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+/* Glowing Neon Effect on Footer Text */
+footer p:hover {
+    color: #00ff41;
+    text-shadow: 0 0 10px rgba(0, 255, 65, 1), 0 0 30px rgba(0, 255, 65, 0.8);
+}
+
+/* Styling the Links in Footer */
+footer a {
+    color: #00ff41; /* Neon green */
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Hover Effect for Links */
+footer a:hover {
+    color: #1a1a1a; /* Darken link text on hover */
+    background-color: #00ff41; /* Neon green background on hover */
+    border-radius: 5px;
+    text-shadow: 0 0 10px rgba(0, 255, 65, 1); /* Glowing text shadow */
+}
+
+/* Footer Links List */
+footer ul {
+    list-style: none;
+    margin-top: 20px;
+}
+
+/* Footer Links Items */
+footer ul li {
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
+
+/* Additional Footer Styling for Mobile */
+@media (max-width: 768px) {
+    footer p {
+        font-size: 1rem;
+    }
+
+    footer a {
+        font-size: 1rem;
+    }
+}
+
+
+/* About Page Specific Styling */
+/* General Styling for About Us Page */
+.about-page {
+    background-color: #121212; /* Dark background for the whole page */
+    color: #ccc; /* Light text color */
+    font-family: 'Roboto', sans-serif;
+    padding: 60px 20px;
+}
+
+/* Introduction Section */
+.intro {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.intro h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #00ff41;
+    text-shadow: 0 0 10px rgba(0, 255, 65, 1);
+}
+
+.intro p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.intro img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.6); /* Neon glow effect */
+}
+
+/* Features Section */
+.features {
+    margin-bottom: 40px;
+}
+
+.features h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #00ff41;
+    text-shadow: 0 0 10px rgba(0, 255, 65, 1);
+}
+
+.feature-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.feature {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    width: 22%;
+    margin: 10px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.8);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.feature img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.feature h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #00ff41;
+    text-shadow: 0 0 10px rgba(0, 255, 65, 1);
+}
+
+.feature p {
+    font-size: 1.1rem;
+}
+
+.feature:hover {
+    transform: translateY(-10px); /* Lift effect on hover */
+}
+
+/* Mission Statement Section */
+.mission-statement {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.mission-statement h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #00ff41;
+    text-shadow: 0 0 10px rgba(0, 255, 65, 1);
+}
+
+.mission-statement p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.mission-statement img {
+    max-width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.6);
+}
+
+/* Final Thoughts Section */
+.final-thoughts {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.final-thoughts h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #00ff41;
+    text-shadow: 0 0 10px rgba(0, 255, 65, 1);
+}
+
+.final-thoughts p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.final-thoughts strong {
+    font-weight: bold;
+    color: #00ff41;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #121212;
+    color: #ccc;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    font-family: 'Roboto', sans-serif;
+    border-top: 2px solid #00ff41;
+}
+
+footer p {
+    margin: 10px 0;
+    color: #bbb;
+    font-size: 1.1rem;
+}
+
+footer a {
+    color: #00ff41;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+footer a:hover {
+    color: #1a1a1a;
+    background-color: #00ff41;
+    text-shadow: 0 0 10px rgba(0, 255, 65, 1);
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .feature {
+        width: 48%; /* Two features per row on smaller screens */
+    }
+
+    .mission-statement img {
+        max-width: 100%;
+    }
+
+    .intro img, .final-thoughts img {
+        max-width: 90%;
+    }
+}
+
+
+
+/* Settings Page Styles */
+.settings-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1f1f1f;
+    border-radius: 8px;
+}
+
+.settings-page h1 {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffb74d;
+}
+
+.settings-section {
+    margin-bottom: 30px;
+}
+
+.settings-section h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #ffb74d;
+}
+
+.settings-section label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #b3b3b3;
+}
+
+.settings-section input,
+.settings-section select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+.settings-section input:focus,
+.settings-section select:focus {
+    border-color: #ffb74d;
+    outline: none;
+}
+
+/* Buttons */
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.danger-zone {
+    background-color: #ffefef;
+    padding: 15px;
+    border-radius: 4px;
+    border: 1px solid #ff4d4d;
+}
+
+.danger-zone p {
+    color: #ff4d4d;
+}
+
+.delete-button {
+    background-color: #ff4d4d;
+    padding: 10px 20px;
+}
+
+.delete-button:hover {
+    background-color: #cc0000;
+}
+
+/* Form and Input Styling for Login & Register */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    background: #1c1c1c;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #333;
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus {
+    border-color: #ffb74d;
+    outline: none;
+}
+
+form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+input[type="submit"]:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+}
+
+ 
+/*body {
+    background-color: #121212; 
+    color: #ccc;  Light text color 
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+
+.image-showcase {
+    position: relative;
+    z-index: 1;
+    background-color: #1a1a1a;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.7); 
+    text-align: center;
+    
+    
+}
+
+
+.image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    display: inline-block;
+    
+}
+
+.showcase-image {
+    width: 100%;
+    height: auto;
+    max-width: 800px;
+    border: 10px solid #00ff41; 
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.8); 
+    transition: transform 0.3s ease;
+}
+
+
+.showcase-image:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 0 30px rgba(0, 255, 65, 1); 
+}
+
+
+.home-link {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #00ff41; 
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    border: 2px solid #00ff41;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.home-link:hover {
+    color: #1a1a1a;
+    background-color: #00ff41;
+    text-shadow: 0 0 10px rgba(0, 255, 65, 1);
+    transform: scale(1.1); 
+}
+
+
+@media (max-width: 768px) {
+    .showcase-image {
+        max-width: 100%; 
+    }
+
+    .home-link {
+        font-size: 1rem; 
+    }
+} 
+*/
+/*sign up*/
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('https://via.placeholder.com/1600x900') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.form-box {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    color: #fff;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.form-box h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.form-box p {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #bbb;
+}
+
+.form-box label {
+    display: block;
+    text-align: left;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #ddd;
+}
+
+.form-box input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+}
+
+.form-box input::placeholder {
+    color: #888;
+}
+
+.form-box .btn {
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.form-box .btn:hover {
+    background-color: #0056b3;
+}
+
+.form-footer {
+    margin-top: 20px;
+}
+
+.form-footer a {
+    color: #00f;
+    text-decoration: none;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+
+/*budget*/
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #0a0a0a;
+    color: #fff;
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Glowing Text Effect */
+.glowing-text {
+    color: #00ff41;
+    text-shadow: 0 0 5px #00ff41, 0 0 10px #00ff41, 0 0 20px #00ff41, 0 0 30px #00ff41;
+    animation: glowing 1.5s infinite alternate;
+}
+
+@keyframes glowing {
+    0% {
+        text-shadow: 0 0 5px #00ff41, 0 0 10px #00ff41, 0 0 20px #00ff41;
+    }
+    100% {
+        text-shadow: 0 0 20px #ff4081, 0 0 30px #ff4081, 0 0 40px #ff4081;
+    }
+}
+
+/* Container */
+.container {
+    padding: 40px;
+}
+
+/* Budget Table */
+.budget-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+}
+
+.budget-table th, .budget-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #444;
+}
+
+.budget-table th {
+    background-color: #1c1c1c;
+    color: #00ff41;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.budget-table td {
+    background-color: #222;
+    color: #ccc;
+}
+
+.budget-table .btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.budget-table .btn-primary {
+    background-color: #00bcd4;
+    color: #fff;
+}
+
+.budget-table .btn-danger {
+    background-color: #ff4081;
+    color: #fff;
+}
+
+.budget-table .btn-primary:hover, .budget-table .btn-danger:hover {
+    transform: translateY(-5px);
+}
+
+.no-budgets {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #ff4081;
+}
+
+/* Add Budget Button */
+.add-budget button {
+    padding: 10px 20px;
+    background-color: #00bcd4;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 0 10px rgba(0, 188, 212, 0.8);
+    transition: background-color 0.3s ease, box-shadow 0.2s;
+}
+
+.add-budget button:hover {
+    background-color: #ff4081;
+    box-shadow: 0 0 20px rgba(255, 64, 129, 0.8);
+}
+
+/* Floating Sidebar */
+.floating-sidebar {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background-color: #222;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+}
+
+.floating-sidebar ul {
+    list-style: none;
+}
+
+.floating-sidebar ul li {
+    margin: 15px 0;
+}
+
+.floating-sidebar ul li a {
+    color: #00bcd4;
+    text-decoration: none;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    transition: color 0.3s, transform 0.2s;
+}
+
+.floating-sidebar ul li a:hover {
+    color: #ff4081;
+    transform: translateX(5px);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #222;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.8);
+    width: 400px;
+    color: #fff;
+}
+
+.modal-content h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.modal-content label {
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #333;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+}
+
+.modal-content input:focus {
+    outline: none;
+    border: 2px solid #00ff41;
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+}
+
+.modal .close-btn {
+    color: #fff;
+    font-size: 2rem;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+/* Floating Action Button (FAB) */
+.fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #00bcd4;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2rem;
+    box-shadow: 0 0 15px rgba(0, 188, 212, 0.8);
+    transition: background-color 0.3s, transform 0.3s;
+    cursor: pointer;
+}
+
+.fab:hover {
+    background-color: #ff4081;
+    transform: scale(1.1);
+}
+
+/* Budget Chart Styles */
+.budget-chart {
+    margin-top: 40px;
+    text-align: center;
+}
+
+#budgetChart {
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+    margin: 0 auto;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+}
+
+
+/* transhistory */
+/* CTA Button */
+.cta-btn {
+    padding: 12px 24px;
+    background-color: #00bcd4; /* Cyber Blue */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 0 10px rgba(0, 188, 212, 0.8);
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.2s, transform 0.2s ease;
+}
+
+.cta-btn:hover {
+    background-color: #ff4081; /* Neon Pink */
+    box-shadow: 0 0 20px rgba(255, 64, 129, 0.8);
+    transform: scale(1.05);
+}
+
+/* Form Inputs & Selects */
+input[type="text"],
+input[type="date"],
+select {
+    background-color: #333;
+    color: #fff;
+    border: 2px solid #00ff41;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin: 10px;
+    width: 250px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+select:focus {
+    background-color: #222;
+    border-color: #ff4081;
+}
+
+/* Table Styling */
+.transaction-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 40px;
+}
+
+.transaction-table th,
+.transaction-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #555;
+}
+
+.transaction-table th {
+    background-color: #1a1a1a;
+    color: #00ff41;
+    font-weight: bold;
+}
+
+.transaction-table tr:nth-child(even) {
+    background-color: #333;
+}
+
+.transaction-table tr:hover {
+    background-color: #444;
+    cursor: pointer;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #0a0a0a;
+    color: #ccc;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: #00bcd4;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #ff4081;
+}
+
+/* Night Mode Styles */
+body.night-mode {
+    background-color: #121212;
+    color: #ccc;
+}
+
+body.night-mode .cta-btn {
+    background-color: #00ff41; /* Neon Green */
+    color: #333;
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.7);
+}
+
+body.night-mode .cta-btn:hover {
+    background-color: #ff4081;
+    box-shadow: 0 0 20px rgba(255, 64, 129, 0.8);
+}
+
+/* Dark Mode Form Inputs */
+body.night-mode input[type="text"],
+body.night-mode input[type="date"],
+body.night-mode select {
+    background-color: #222;
+    color: #fff;
+    border-color: #00ff41;
+}
+
+/* Hero Section Styling */
+.hero-title {
+    font-size: 4.5rem;
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    animation: glitch-text 2s infinite;
+}
+
+.hero p {
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #aaa;
+}
+
+/* Glitch Text Effect */
+@keyframes glitch-text {
+    0% {
+        text-shadow: 0 0 5px #00ff41, 0 0 10px #00ff41, 0 0 15px #00ff41;
+    }
+    20% {
+        text-shadow: 2px 2px 4px #ff4081, 0 0 10px #ff4081;
+    }
+    40% {
+        text-shadow: -2px -2px 5px #00bcd4, 0 0 15px #00bcd4;
+    }
+    60% {
+        text-shadow: 0 0 5px #00ff41, 0 0 10px #00ff41, 0 0 15px #00ff41;
+    }
+    100% {
+        text-shadow: 0 0 5px #ff4081, 0 0 10px #ff4081, 0 0 15px #ff4081;
+    }
+}
+
+/* Glitch Background Animation */
+@keyframes glitch-background {
+    0% {
+        transform: translate(0, 0);
+    }
+    20% {
+        transform: translate(-5px, -5px);
+    }
+    40% {
+        transform: translate(5px, 5px);
+    }
+    60% {
+        transform: translate(-5px, 0);
+    }
+    80% {
+        transform: translate(5px, 0);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .cta-btn {
+        font-size: 1.1rem;
+    }
+
+    .transaction-table th, 
+    .transaction-table td {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .cta-btn {
+        font-size: 1rem;
+    }
+
+    .cta h2 {
+        font-size: 2.5rem;
+    }
+
+    .cta p {
+        font-size: 1rem;
+    }
+}
+
